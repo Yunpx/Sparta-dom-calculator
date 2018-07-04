@@ -28,13 +28,15 @@ for (var i = 0; i < allButtons.length; i++) {
       currentOperator = this.textContent;
       myString+=this.textContent;
       document.getElementById("screen").textContent=myString;
-
-      console.log(currentOperator);
-      if(numbersEntered.length>2){
+      console.log("current op"+currentOperator +" length " + numbersEntered.length);
+      if(numbersEntered.length>=2){
         result = processing(currentOperator,numbersEntered[j],numbersEntered[j+1]);
-        console.log("operator"+result);
         numbersEntered = [];
         numbersEntered[0]=result;
+        console.log("operator"+result);
+      }else{
+        console.log("what"+result);
+
       }
     }else if (this.className=="equals") {
       finalResult= processing(currentOperator,numbersEntered[j],numbersEntered[j+1]);
@@ -56,8 +58,8 @@ function clear(){
   result="";
   numbersEntered = [];
   currentOperator ="";
-
 }
+
 function subtracting(n1,n2) {
   return n1-n2;
 }
