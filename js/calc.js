@@ -12,7 +12,6 @@ var myOperators = [
   dividing
 ];
 
-
 var myString="";
 var j= 0;
 var finalResult;
@@ -22,33 +21,26 @@ for (var i = 0; i < allButtons.length; i++) {
     if(this.className=="buttonClear"){
       clear();
       document.getElementById("screen").textContent="0";
-
-      //equals
-    }else if(this.className=="operator"){// or any operators, class == equals or operators, if this class is operator
+    //operator
+    }else if(this.className=="operator"){
       currentOperator = this.textContent;
       myString+=this.textContent;
       document.getElementById("screen").textContent=myString;
-      console.log("current op"+currentOperator +" length " + numbersEntered.length);
       if(numbersEntered.length>=2){
         result = processing(currentOperator,numbersEntered[j],numbersEntered[j+1]);
         numbersEntered = [];
         numbersEntered[0]=result;
-        console.log("operator"+result);
-      }else{
-        console.log("what"+result);
-
       }
+    //equals
     }else if (this.className=="equals") {
       finalResult= processing(currentOperator,numbersEntered[j],numbersEntered[j+1]);
-      console.log(finalResult);
       document.getElementById("screen").textContent= finalResult;
       clear();
+    //number
     }else{
        numbersEntered.push(this.textContent);
        myString+=this.textContent;
        document.getElementById("screen").textContent=myString;
-       console.log(this.textContent+"is pushed");
-      //othter
     }
   })
 }
@@ -91,6 +83,6 @@ function processing(currentOperator,number1,number2) {
     return myOperators[3](number1,number2);
 
     default:
-    return "Error: Operation not exist";
+    return "nothing";
   }
 }
